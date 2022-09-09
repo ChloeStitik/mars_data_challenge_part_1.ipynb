@@ -86,17 +86,3 @@ Which month, on average, has the lowest temperature? The highest?
 Which month, on average, has the lowest atmospheric pressure? The highest?
 How many terrestrial days exist in a Martian year? A visual estimate within 25% was made.
 The DataFrame was exported into a CSV file. (5 points)
-
-Submission
-As a reminder, the deliverables for this Challenge are as follows:
-
-Deliverable 1: A Jupyter notebook containing code that scrapes the Mars news titles and preview text.
-
-Deliverable 2: A Jupyter notebook containing code that scrapes the Mars weather data and that cleans, visualizes, and analyzes that data.
-
-To submit your Challenge assignment, click Submit, and then provide the URL of your GitHub repository for grading.
-
-NOTE
-You are allowed to miss up to two Challenge assignments and still earn your certificate. If you complete all Challenge assignments, your lowest two grades will be dropped. If you wish to skip this assignment, click Next, and move on to the next module.
-
-Comments are disabled for graded submissions in Bootcamp Spot. If you have questions about your feedback, please notify your instructional staff or your Student Success Manager. If you would like to resubmit your work for an additional review, you can use the Resubmit Assignment button to upload new links. You may resubmit up to three times for a total of four submissions.
