@@ -1,40 +1,87 @@
-Background
+## Part  1: Scraping
 
-You’re now ready to take on the full web-scraping and data analysis project for the mission to Mars. You’ve learned to identify HTML elements on a page, identify their id and class attributes, and use this knowledge to extract information via both automated browsing with Splinter and HTML parsing with Beautiful Soup. You’ve also learned to scrape various types of information. These include HTML tables and recurring elements, like multiple news articles on a webpage.
+Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
-As you work on this Challenge, remember that you’re strengthening the same core skills that you’ve been developing until now: collecting data, organizing and storing data, analyzing data, and then visually communicating your insights.
+* Create a Jupyter Notebook file called `mission_to_mars.ipynb`. Use this file to complete all your scraping and analysis tasks. The following information outlines what you need to scrape.
 
-What You're Creating
-This new assignment consists of two technical products. You will submit the following deliverables:
+### NASA Mars News
 
-Deliverable 1: Scrape titles and preview text from Mars news articles. Optionally export the data into a JSON file or a MongoDB database.
+* Scrape the [Mars News Site](https://redplanetscience.com/) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later.
 
-Deliverable 2: Scrape and analyze Mars weather data, which exists in a table.
+```python
+# Example:
+news_title = "NASA's Next Mars Mission to Investigate Interior of Red Planet"
 
-Deliverable 1: Scrape Titles and Preview Text from Mars News (40 points)
-Deliverable 1 Instructions
-Create a new Jupyter notebook named mars_data_challenge_part_1.ipynb.
+news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up this summer, on course for launch next May from Vandenberg Air Force Base in central California -- the first interplanetary launch in history from America's West Coast."
+```
 
-Scrape the Mars News (Links to an external site.) website by using Splinter and Beautiful Soup. Specifically, scrape the title and preview text, or summary text, of each article on the landing page.
+### JPL Mars Space Images—Featured Image
 
-If you’d like a hint on identifying which elements to scrape, that’s totally okay. If not, that’s great too. You can always revisit this later if you change your mind.
+* Visit the URL for the Featured Space Image site [here](https://spaceimages-mars.com).
 
-HINT
-Store the scraping results in Python data structures as follows:
+* Use Splinter to navigate the site and find the image URL for the current Featured Mars Image, then assign the URL string to a variable called `featured_image_url`.
 
-Store each title-and-preview pair in a Python dictionary. And, give each dictionary two keys: title and preview. An example is the following:
+* Be sure to find the image URL to the full-sized `.jpg` image.
 
-{'title': "Mars Rover Begins Mission!", 
-      'preview': "NASA's Mars Rover begins a multiyear mission to collect data about the little-explored planet."}
-Store all the dictionaries in a Python list.
+* Be sure to save a complete URL string for this image.
 
-Print the list in your notebook.
+```python
+# Example:
+featured_image_url = 'https://spaceimages-mars.com/image/featured/mars2.jpg'
+```
 
-Optionally, store the scraped data in a file or database (to ease sharing the data with others). To do so, export the scraped data to either a JSON file or a MongoDB database.
+### Mars Facts
 
-Deliverable 1 Requirements
-Automated browsing (with Splinter) was used to visit the Mars news site, and the HTML code was extracted (with Beautiful Soup). (10 points)
+* Visit the [Mars Facts webpage](https://galaxyfacts-mars.com) and use Pandas to scrape the table containing facts about the planet including diameter, mass, etc.
 
-The titles and preview text of the news articles were scraped and extracted. (20 points)
+* Use Pandas to convert the data to a HTML table string.
 
-The scraped information was stored in the specified Python data structure—specifically, a list of dictionaries. (10 points)
+### Mars Hemispheres
+
+* Visit the [astrogeology site](https://marshemispheres.com/) to obtain high-resolution images for each hemisphere of Mars.
+
+* You will need to click each of the links to the hemispheres in order to find the image URL to the full-resolution image.
+
+* Save the image URL string for the full resolution hemisphere image and the hemisphere title containing the hemisphere name. Use a Python dictionary to store the data using the keys `img_url` and `title`.
+
+* Append the dictionary with the image URL string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
+
+```python
+# Example:
+hemisphere_image_urls = [
+    {"title": "Valles Marineris Hemisphere", "img_url": "..."},
+    {"title": "Cerberus Hemisphere", "img_url": "..."},
+    {"title": "Schiaparelli Hemisphere", "img_url": "..."},
+    {"title": "Syrtis Major Hemisphere", "img_url": "..."},
+]
+```
+
+- - -
+
+## Part 2: MongoDB and Flask Application
+
+Use MongoDB with Flask templating to create a new HTML page that displays all the information that was scraped from the URLs above.
+
+* Start by converting your Jupyter notebook into a Python script called `scrape_mars.py` by using a function called `scrape`. This function should  execute all your scraping code from above and return one Python dictionary containing all the scraped data.
+
+* Next, create a route called `/scrape` that will import your `scrape_mars.py` script and call your `scrape` function.
+
+  * Store the return value in Mongo as a Python dictionary.
+
+* Create a root route `/` that will query your Mongo database and pass the Mars data into an HTML template for displaying the data.
+
+* Create a template HTML file called `index.html` that will take the Mars data dictionary and display all the data in the appropriate HTML elements. Use the following as a guide for what the final product should look like, but feel free to create your own design.
+
+![final_app_part1.png](Images/final_app.png)
+
+- - -
+
+## Part 3: Submission
+
+To submit your work to BootCampSpot, create a new GitHub repository and upload the following:
+
+1. The Jupyter notebook containing the scraping code used
+
+2. Screenshots of your final application
+
+Ensure your repository has regular commits and a detailed `README.md` file. Then, submit the link to your new repository. 
